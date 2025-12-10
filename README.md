@@ -29,7 +29,7 @@ The LLM is prompted to extract the following fields: `component`, `value`, `unit
 
 ---
 
-## 2. Components
+## 2. Components 
 
 This section explains how each component of the system works during Indexing and Runtime.
 
@@ -131,6 +131,42 @@ Located in `src/ui/app.py`, provides an intuitive interface for the system.
 - **"Retrieved Chunks Sent to Gemini (Debug)" expander** - Prints `QueryProcessor.last_context`, making it clear exactly what the LLM saw
 
 **Why the debug view matters:** It allows you to inspect the exact context chunks that were fed to the LLM, helping diagnose retrieval issues or understand why certain specs were extracted.
+
+### 2.9 Logging System
+
+Located in `src/utils/logger.py`, the project includes a **comprehensive logging system** that tracks the entire execution pipeline.
+
+**Key Features:**
+- **Execution tracking** - Logs every step: PDF parsing, chunking, embedding, retrieval, and LLM extraction
+- **Error debugging** - Captures detailed error messages with timestamps and stack traces
+- **Performance monitoring** - Tracks processing times for each component
+- **Query history** - Records all queries with their results for analysis
+
+**Log Structure:**
+```
+logs/
+└── system.log        # Centralized log file containing all execution information
+```
+
+**Why this is critical:**
+- ✅ **Quick error diagnosis** - Instantly identify where failures occur in the pipeline
+- ✅ **Performance optimization** - Find bottlenecks by analyzing processing times
+- ✅ **Audit trail** - Track what queries were run and what specs were extracted
+- ✅ **Debugging RAG issues** - See exactly which chunks were retrieved and why
+- ✅ **Production monitoring** - Monitor system health in real-world deployments
+
+**Example Log Output:**
+```
+2024-12-10 14:23:15 [INFO] Starting PDF parsing: service_manual.pdf
+2024-12-10 14:23:18 [INFO] Extracted 342 pages successfully
+2024-12-10 14:23:19 [INFO] Created 1,247 chunks with section awareness
+2024-12-10 14:23:25 [INFO] FAISS index built: 1,247 vectors
+2024-12-10 14:24:01 [INFO] Query: "torque for brake caliper bolts"
+2024-12-10 14:24:01 [INFO] Retrieved 15 chunks, reranked to top 6
+2024-12-10 14:24:03 [INFO] Extracted 2 specs successfully
+```
+
+If an error occurs, the logs provide the exact point of failure with full context, making troubleshooting straightforward.
 
 ---
 
