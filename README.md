@@ -1,4 +1,4 @@
-# 🚗 Spec Extraction RAG (LangChain + FAISS + Gemini)
+# Spec Extraction RAG (LangChain + FAISS + Gemini)
 
 This project is a **Retrieval-Augmented Generation (RAG)** system designed to efficiently extract **vehicle specifications** from an automotive **service manual PDF**.
 
