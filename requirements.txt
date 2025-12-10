@@ -1,0 +1,28 @@
+# === LangChain Core Components ===
+langchain
+langchain-core
+langchain-community
+langchain-text-splitters
+
+# === LLM Integration ===
+# The core SDK for the Gemini API
+google-genai
+
+# === PDF Parsing & OCR ===
+llama-parse
+pymupdf
+pytesseract
+pillow
+# opencv-python is often needed by pytesseract/unstructured, useful for stability
+opencv-python
+
+# === Vector Store & Embeddings ===
+faiss-cpu
+numpy
+# Required for Streamlit dataframes
+pandas 
+
+# === Utilities and UI ===
+python-dotenv
+regex
+streamlit

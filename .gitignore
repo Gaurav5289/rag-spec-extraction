@@ -1,0 +1,27 @@
+# Python cache
+__pycache__/
+*.pyc
+
+# Virtual environment
+ragvenv/
+venv/
+.env
+
+# API keys
+*.env
+src/utils/config.py
+
+# FAISS index files
+data/*.faiss
+data/*.pkl
+
+# PDF uploads
+data/raw_pdfs/
+*.pdf
+
+# Streamlit cache
+.streamlit/
+
+# IDE files
+.vscode/
+.idea/
